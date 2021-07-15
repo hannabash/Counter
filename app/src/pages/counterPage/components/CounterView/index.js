@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 
 const CounterView = ({countValue, handleReset, handleIncrement, handleDecrement, isEven}) => {
     return (
-        <div className={styles.wrapper} className ={(countValue % 2 === 0 ? styles.red: styles.green)}>
+        <div className={`${styles.wrapper}, ${(countValue % 2 === 0 ? styles.red: styles.green)}`}>
             <div className={styles.display}>{countValue}</div>
             <div className={styles.display}>{countValue%2 === 0 ? 'Четное': 'Нечетное'}</div>
             <div className={styles.buttonWrapper}>

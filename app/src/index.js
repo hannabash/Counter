@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-import CounterContainer from './components/counter/containers/CounterContainer'
+import CounterContainer from './pages/counterPage/containers/CounterContainer'
+import Routes from './Routes/Routes';
 
 ReactDOM.render(
   <React.StrictMode>
-    <CounterContainer/>
+    <BrowserRouter>
+      <Routes/>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
