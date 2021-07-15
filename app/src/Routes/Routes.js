@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import {ROUTES} from "./routeNames";
-import CounterContainer from '../pages/counterPage/containers/CounterContainer';
+import CounterContainer from '../pages/CounterPage/containers/CounterContainer';
 import HomePageContainer from '../pages/HomePage/container/HomePageContainer';
 
 const Routes = () => {

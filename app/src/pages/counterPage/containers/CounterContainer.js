@@ -11,14 +11,18 @@ class CounterContainer extends Component {
         };
     }
 
+    componentDidUpdate (propState, prevState) {
+        if (prevState.countValue !== this.state.countValue) {
+            this.setState({ isEven: this.state.countValue % 2 === 0 })            
+        }
+    }
+
     handleIncrement = () => {
         this.setState( (state) => {
             const incrementedValue = state.countValue + 1;
-            const isEven = incrementedValue %2 ===0;
 
             return {
                 countValue: incrementedValue,
-                isEven,
             };
         });
     }
@@ -27,29 +31,22 @@ class CounterContainer extends Component {
         if (this.state.countValue>0) {
             this.setState( (state) => {
                 const decrementedValue = state.countValue - 1;
-                const isEven = decrementedValue %2 ===0;
 
                 return {
                     countValue: decrementedValue,
-                    isEven: isEven,
                 };       
             });
         };
     };
 
     handleReset = () => {
-        this.setState( (state) => {
-        
-        return {
-            countValue:0,
-        }    
-
-        })
+        this.setState({countValue:0})
     }
 
     render() {
         return (
-            <CounterView 
+            <CounterView
+            isEven={this.state.isEven}
             countValue={this.state.countValue} 
             handleIncrement ={this.handleIncrement}
             handleDecrement={this.handleDecrement}
