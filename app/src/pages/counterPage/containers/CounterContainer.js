@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CounterView from '../components/CounterView'
+import CounterView from '../../../commonComponents/CounterView'
 
 class CounterContainer extends Component {
     constructor(props) {

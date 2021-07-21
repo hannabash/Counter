@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import styles from './styles.module.scss';
 
-const CounterView = ({countValue, handleReset, handleIncrement, handleDecrement, isEven}) => {
+const CounterView = ({countValue, handleReset, handleIncrement, isEven, handleDecrement}) => {
     return (
-        <div className = {`${styles.wrapper} ${!isEven ? styles.red: styles.green}`}>
+        <div className = {`${styles.wrapper} ${isEven ? styles.green: styles.red}`}>
             <div className={styles.display}>{countValue}</div>
-            <div className={styles.display}>{countValue%2 === 0 ? 'Четное': 'Нечетное'}</div>
+            <div className={styles.display}>{isEven ? 'Четное': 'Нечетное'}</div>
             <div className={styles.buttonWrapper}>
                 <button onClick={handleDecrement}>-</button>
                 <button onClick={handleReset}>Reset</button>
@@ -19,7 +19,6 @@ const CounterView = ({countValue, handleReset, handleIncrement, handleDecrement,
 
 CounterView.propTypes = {
     countValue: PropTypes.number.isRequired,
-    isEven: PropTypes.bool.isRequired,
 };
 
-export default CounterView;
+export default React.memo(CounterView);
