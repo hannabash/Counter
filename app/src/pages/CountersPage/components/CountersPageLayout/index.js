@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {v4 as uuid} from 'uuid';
 
 import styles from './styles.module.scss'
 import CounterView from "../../../../commonComponents/CounterView";
@@ -28,7 +29,7 @@ const CountersPageLayout = ({
       </div>
       {countersList.map((counter, index) => {
         return (
-          <div className={styles.countersWrapper} key={index}>
+          <div className={styles.countersWrapper} key={uuid()}>
             <CounterView
               countValue={counter.countValue}
               isEven={counter.countValue% 2 === 0}

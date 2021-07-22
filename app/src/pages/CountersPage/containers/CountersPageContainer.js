@@ -8,33 +8,30 @@ const CountersPageContainers = () => {
    const [countersList, setCountersList] = useState([])  
    
    const handleAddCounter = useCallback(() => { 
-      const UpdateCounter = countersList.map((counter) => ({
+      const updateCounters = countersList.map((counter) => ({
          countValue:
          counter.countValue % 2 === 0 
          ? counter.countValue + 1 
          : counter.countValue,
       }));
-      setCountersList([...UpdateCounter, {countValue: 0}]);      
+      setCountersList([...updateCounters, {countValue: 0}]);      
    }, [countersList]);
 
    const handleRemoveCounter = useCallback( () => {
       const countersListCopy = [...countersList];
       countersListCopy.pop();
-      const UpdateCounter = countersListCopy.map((counter) => ({
+      const updateCounters = countersListCopy.map((counter) => ({
          countValue:
          counter.countValue % 2 !== 0 
          ? counter.countValue - 1 
          : counter.countValue,
       }));
 
-      setCountersList(UpdateCounter);
+      setCountersList(updateCounters);
    }, [countersList]);
 
    const handleResetCounter = useCallback(() => {
-      const countersListCopy = [...countersList];
-      countersListCopy.splice(0, countersListCopy.length);
-
-      setCountersList(countersListCopy);
+      setCountersList([]);
    }, [countersList]);   
 
    const handleIncrement = useCallback((index) => {
@@ -46,13 +43,12 @@ const CountersPageContainers = () => {
    }, [countersList]);
 
    const handleDecrement = useCallback((index) => {
-         const countersListCopy = [...countersList];
-         if (countersListCopy[index].countValue>0) {
-            countersListCopy[index].countValue =
-            countersListCopy[index].countValue - 1; 
-         }
-
+      if (countersList[index].countValue>0) {
+         const countersListCopy = [...countersList];            
+         countersListCopy[index].countValue =
+         countersListCopy[index].countValue - 1; 
          setCountersList(countersListCopy);
+         }
       }, [countersList]);   
 
       const handleReset = useCallback((index) => {
