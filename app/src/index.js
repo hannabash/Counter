@@ -1,19 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import MainLayout from './commonComponents/MainLayout';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from 'react-redux';
 
-import CounterContainer from './pages/CounterPage/containers/CounterContainer'
-import Routes from './Routes/Routes';
+import MainLayout from "./commonComponents/MainLayout";
+import Routes from "./Routes/Routes";
+import { configureStore } from "./Store/configureStore";
+
+const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <MainLayout>
-        <Routes />
-      </MainLayout>
-    </BrowserRouter>
+    <Provider store = {store}>
+      <BrowserRouter>
+        <MainLayout>
+          <Routes />
+        </MainLayout>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
-

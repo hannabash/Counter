@@ -16,5 +16,9 @@ export default [
    {
       title: 'Counter of Counters',
       path: ROUTES.COUNTER_OF_COUNTERS
+   },
+   {
+      title: 'To Do List',
+      path: ROUTES.TO_DO_LIST
    }
 ]

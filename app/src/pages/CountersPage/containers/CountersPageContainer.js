@@ -1,6 +1,4 @@
 import {useState, useCallback, useMemo} from "react";
-import CounterView from "../../../commonComponents/CounterView";
-
 
 import CountersPageLayout from "../components/CountersPageLayout/index";
 

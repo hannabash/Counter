@@ -3,5 +3,6 @@ export const ROUTES = {
    COUNTER_PAGE: '/classCounter`',
    FUNCTIONAL_PAGE: '/counter',
    LISTS: '/lists',
-   COUNTER_OF_COUNTERS: '/counters'
+   COUNTER_OF_COUNTERS: '/counters',
+   TO_DO_LIST: '/toDoList'
 }

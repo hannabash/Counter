@@ -45,7 +45,7 @@ const CountersPageLayout = ({
 };
 
 CountersPageLayout.propTypes = {
-  countersListCopy: PropTypes.arrayOf (
+  countersList: PropTypes.arrayOf (
     PropTypes.shape({
       countValue: PropTypes.number,
     })
