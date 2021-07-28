@@ -18,13 +18,16 @@ const ToDoListContainer = () => {
       setValue(inputValue)
    }, [])
 
-   const handleTasksCreate = useCallback(() => {
+   const handleTasksCreate = useCallback((event) => {
+      event.preventDefault();
       dispatch(ADD_TASK(inputValue));
+      setValue('')
    },[inputValue]);
 
-   const handleTasksEdit = useCallback((index) => {
+   const handleTasksEdit = useCallback((index) => {   
       dispatch(EDIT_TASK(index))
-   }, [dispatch]);
+      setValue(tasks[index].taskValue)
+   }, [inputValue]);
 
    const handleSaveEdit = useCallback((index) => {
       dispatch(SAVE_TASK({taskIndex: index, value: inputValue}))

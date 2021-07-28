@@ -4,8 +4,19 @@
    padding-left: 10px;
    background-color: rgba(160, 212, 39, 0.685);
    font-size: 18px;
+   display: flex;
+   justify-content:space-between;
+   align-items: center;
+   box-sizing: border-box;
 }
 .execute{
-   text-decoration: line-through;
    background-color:rgba(255, 0, 0, 0.5);
+   text-decoration: line-through;
 }
+#button{
+   display : flex;
+   justify-content: flex-end;
+   align-items: center;
+   padding: 0;
+}
+
