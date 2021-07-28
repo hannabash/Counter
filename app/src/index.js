@@ -4,8 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
 
 import MainLayout from "./commonComponents/MainLayout";
-import Routes from "./Routes/Routes";
 import { configureStore } from "./Store/configureStore";
+import Routes from "./Routes/Routes";
 
 const store = configureStore();
 
