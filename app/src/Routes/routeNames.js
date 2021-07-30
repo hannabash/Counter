@@ -4,5 +4,6 @@ export const ROUTES = {
    FUNCTIONAL_PAGE: '/counter',
    LISTS: '/lists',
    COUNTER_OF_COUNTERS: '/counters',
-   TO_DO_LIST: '/toDoList'
+   TO_DO_LIST: '/toDoList',
+   ASYNC_PAGE: '/async',
 }

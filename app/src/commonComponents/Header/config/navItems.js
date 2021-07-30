@@ -20,5 +20,9 @@ export default [
    {
       title: 'To Do List',
       path: ROUTES.TO_DO_LIST
+   },
+   {
+      title: 'Async',
+      path: ROUTES.ASYNC_PAGE
    }
 ]

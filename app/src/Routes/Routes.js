@@ -8,6 +8,7 @@ import FunctionalCounterContainer from "../pages/FunctionalCounterPage/container
 import ListsPageContainer from "../pages/ListsPage/containers/ListsPageContainer";
 import CountersPageContainers from "../pages/CountersPage/containers/CountersPageContainer";
 import ToDoListContainer from "../pages/ToDoList/containers/ToDoListContainer";
+import AsyncOperationsPageContainer from "../pages/AsyncOperationsPage/containers/AsyncOperationsPageContainer";
 
 const Routes = () => {
   return (
@@ -27,6 +28,10 @@ const Routes = () => {
       <Route
         path={ROUTES.TO_DO_LIST}
         component={ToDoListContainer}
+      />
+      <Route
+        path={ROUTES.ASYNC_PAGE}
+        component={AsyncOperationsPageContainer}
       />
     </Switch>
   );
