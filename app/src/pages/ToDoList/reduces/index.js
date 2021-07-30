@@ -1,5 +1,5 @@
 import {handleActions} from 'redux-actions';
-
+import { v4 as uuid } from "uuid";
 import * as actions from '../actions/index'
 
 const defaultState = {
@@ -9,9 +9,13 @@ const defaultState = {
 const tasksReducer = handleActions({
    [actions.ADD_TASK]: (state, {payload}) => {
       const updatedTasks = [...state.tasks, 
-         {taskValue: payload, 
-         isExecution:false,
-         isEditTask: false}];
+         {
+            id: uuid(),
+            taskValue: payload, 
+            isExecution:false,
+            isEditTask: false,
+            editText: ''
+         }];
       return {
          ...state,
          tasks: updatedTasks,

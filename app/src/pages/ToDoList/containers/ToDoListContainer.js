@@ -1,55 +1,86 @@
-import {useCallback, useState, useMemo} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import { useCallback, useState, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import ToDoListLayout from '../components/ToDoListLayout/ToDoListLayout'
-import {ADD_TASK, REMOVE_TASK, EXECUTE_TASK, EDIT_TASK, SAVE_TASK, CANCEL_TASK} from '../actions/index'
+import ToDoListLayout from "../components/ToDoListLayout/ToDoListLayout";
+import {
+  ADD_TASK,
+  REMOVE_TASK,
+  EXECUTE_TASK,
+  EDIT_TASK,
+  SAVE_TASK,
+  CANCEL_TASK,
+} from "../actions/index";
 
 const ToDoListContainer = () => {
-   const [inputValue, setValue] = useState('')
-   
-   const dispatch = useDispatch();
+  const [inputValue, setValue] = useState("");
 
-   const handleInputChange = useCallback((event) => {
-      event.preventDefault();
-      setValue(event.target.value)
-   }, [])
+  const dispatch = useDispatch();
 
-   const handleReset = useCallback(() => {
-      setValue(inputValue)
-   }, [])
+  const handleInputChange = useCallback((event) => {
+    event.preventDefault();
+    setValue(event.target.value);
+  }, []);
 
-   const handleTasksCreate = useCallback((event) => {
+  const handleReset = useCallback(() => {
+    setValue(inputValue);
+  }, []);
+
+  const handleTasksCreate = useCallback(
+    (event) => {
       event.preventDefault();
       dispatch(ADD_TASK(inputValue));
-      setValue('')
-   },[inputValue]);
+      setValue("");
+    },
+    [inputValue]
+  );
 
-   const handleTasksEdit = useCallback((index) => {   
-      dispatch(EDIT_TASK(index))
-      setValue(tasks[index].taskValue)
-   }, [inputValue]);
+  const handleTasksEdit = useCallback(
+    (index) => {
+      dispatch(EDIT_TASK(index));
+    },
+    [inputValue]
+  );
 
-   const handleSaveEdit = useCallback((index) => {
-      dispatch(SAVE_TASK({taskIndex: index, value: inputValue}))
-   }, [inputValue]);
+  const [editText, setEditText] = useState("");
 
-   const handleCancelEdit = useCallback((index) => {
-      dispatch(CANCEL_TASK(index))
-   }, [dispatch])
+  const handleChangeEditText = useCallback((event) => {
+    event.preventDefault();
+    setEditText(event.target.value);
+  }, []);
 
-   const handleRemove = useCallback((index) => {
-      dispatch(REMOVE_TASK(index))
-   }, [dispatch]);
+  const handleSaveEdit = useCallback(
+    (index) => {
+      dispatch(SAVE_TASK({ taskIndex: index, value: editText }));
+    },
+    [editText]
+  );
 
-   const handleExecuteTask = useCallback((index) =>{
-      dispatch(EXECUTE_TASK(index))
-   }, [dispatch]);
+  const handleCancelEdit = useCallback(
+    (index) => {
+      dispatch(CANCEL_TASK(index));
+    },
+    [dispatch]
+  );
 
-   const {tasks} = useSelector((state) => state.tasksPage)
-   return (
-      <ToDoListLayout 
+  const handleRemove = useCallback(
+    (index) => {
+      dispatch(REMOVE_TASK(index));
+    },
+    [dispatch]
+  );
+
+  const handleExecuteTask = useCallback(
+    (index) => {
+      dispatch(EXECUTE_TASK(index));
+    },
+    [dispatch]
+  );
+
+  const { tasks } = useSelector((state) => state.tasksPage);
+  return (
+    <ToDoListLayout
       inputValue={inputValue}
-      tasks={tasks} 
+      tasks={tasks}
       handleTasksCreate={handleTasksCreate}
       handleRemove={handleRemove}
       handleExecuteTask={handleExecuteTask}
@@ -58,8 +89,9 @@ const ToDoListContainer = () => {
       handleSaveEdit={handleSaveEdit}
       handleCancelEdit={handleCancelEdit}
       handleReset={handleReset}
-      />
-   );
-}
+      handleChangeEditText={handleChangeEditText}
+    />
+  );
+};
 
 export default ToDoListContainer;
