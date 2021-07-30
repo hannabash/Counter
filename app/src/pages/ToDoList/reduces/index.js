@@ -59,6 +59,29 @@ const tasksReducer = handleActions(
         tasks: copy,
       };
     },
+    [actions.UNDO_TASK]: (state, { payload }) => {
+       const copy = [...state.tasks];
+       const currentTask = copy[payload];
+       currentTask.isEditMode = false;
+       return {
+          tasks: copy,
+       }
+    },
+    [actions.REMOVE_TASK]: (state, { payload }) => {
+       const copy = [...state.tasks];
+       copy.splice(payload, 1);
+       return {
+          tasks: copy,
+       }
+    },
+    [actions.COMPLETE_TASK]: (state, { payload }) => {
+       const copy = [...state.tasks];
+       const currentTask = copy[payload];
+       currentTask.isCompleted = true;
+       return {
+          tasks: copy,
+       }
+    }
   },
   defaultState
 );

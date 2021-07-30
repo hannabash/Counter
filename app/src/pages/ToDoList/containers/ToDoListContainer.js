@@ -5,11 +5,11 @@ import ToDoListLayout from "../components/ToDoListLayout/ToDoListLayout";
 import {
   ADD_TASK,
   REMOVE_TASK,
-  EXECUTE_TASK,
   EDIT_TASK,
   SAVE_TASK,
-  CANCEL_TASK,
+  COMPLETE_TASK,
   CHANGE_EDIT_TASK,
+  UNDO_TASK
 } from "../actions/index";
 
 const ToDoListContainer = () => {
@@ -25,9 +25,15 @@ const ToDoListContainer = () => {
     setValue(value);
   }, []);
 
-  const handleTasksCreate = useCallback(() => {
+  const handleTasksCreate = useCallback((event) => {
+    event.preventDefault(); 
     dispatch(ADD_TASK(inputValue));
+    setValue('')
   }, [inputValue, dispatch]);
+
+  const handleTasksReset = useCallback(() => {
+     setValue(inputValue)
+  }, [])
 
   const handleEditToggle = useCallback(
     (index) => {
@@ -43,6 +49,10 @@ const ToDoListContainer = () => {
     [dispatch]
   );
 
+  const handleEditUndo = useCallback((taskIndex) => {
+      dispatch(UNDO_TASK(taskIndex))
+  }, [dispatch])
+
   const handleTaskEdit = useCallback(
     (editText, id) => {
       dispatch(CHANGE_EDIT_TASK({ editText, id }));
@@ -50,14 +60,27 @@ const ToDoListContainer = () => {
     [dispatch]
   );
 
+  const handleTaskRemove = useCallback((index) => {
+     dispatch(REMOVE_TASK(index))
+  }, [dispatch])
+
+  const handleTaskComplete= useCallback((index) =>{
+     dispatch(COMPLETE_TASK(index))
+  }, [dispatch])
+
   return (
     <ToDoListLayout
       tasks={tasks}
+      inputValue={inputValue}
       handleTasksCreate={handleTasksCreate}
       handleInputChange={handleInputChange}
       handleEditToggle={handleEditToggle}
       handleEditSave={handleEditSave}
       handleTaskEdit={handleTaskEdit}
+      handleTasksReset={handleTasksReset}
+      handleEditUndo={handleEditUndo}
+      handleTaskRemove={handleTaskRemove}
+      handleTaskComplete={handleTaskComplete}
     />
   );
 };

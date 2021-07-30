@@ -1,11 +1,30 @@
-.task{
-   width: 800px;
+
+.normal {
    margin: 10px 0;
    padding-left: 10px;
    background-color: rgba(160, 212, 39, 0.685);
    font-size: 18px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   box-sizing: border-box;
 }
-.execute{
+
+.complete {
+   margin: 10px 0;
+   padding-left: 10px;
+   font-size: 18px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   box-sizing: border-box;
    text-decoration: line-through;
-   background-color:rgba(255, 0, 0, 0.5);
+   background-color: rgba(255, 0, 0, 0.5);
+}
+
+.button {
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+   padding: 0;
 }

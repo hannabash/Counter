@@ -13,6 +13,10 @@ const ToDoListLayout = ({
   handleEditToggle,
   handleEditSave,
   handleTaskEdit,
+  handleTasksReset,
+  handleEditUndo,
+  handleTaskRemove,
+  handleTaskComplete
 }) => {
   return (
     <div>
@@ -28,6 +32,10 @@ const ToDoListLayout = ({
         >
           Submit
         </button>
+        <button
+        onClick={handleTasksReset}>
+          Reset
+        </button>
       </form>
       <div>
         {tasks.map((task, index) => (
@@ -36,12 +44,16 @@ const ToDoListLayout = ({
               <EditableTask
                 taskText={task.editText}
                 handleSave={() => handleEditSave(index)}
+                handleUndo={()=>handleEditUndo(index)}
                 handleEdit={(e) => handleTaskEdit(e.target.value, task.id)}
               />
             ) : (
               <Task
                 text={task.text}
+                isCompleted={task.isCompleted}
                 handleEdit={() => handleEditToggle(index)}
+                handleRemove={()=>handleTaskRemove(index)}
+                handleComplete={()=>handleTaskComplete(index)}
               />
             )}
           </div>

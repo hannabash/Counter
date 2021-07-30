@@ -1,5 +1,7 @@
 import React from "react";
 
+import styles from '../ToDoListLayout/styles.module.scss'
+
 const Task = ({
   text,
   isCompleted,
@@ -9,15 +11,10 @@ const Task = ({
 }) => {
   return (
     <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        background: isCompleted ? "red" : "",
-      }}
+      className={`${isCompleted ? styles.complete: styles.normal}`}
     >
       <div>{text}</div>
-      <div>
+      <div className={styles.button}>
         <button onClick={handleEdit}>Edit</button>
         <button onClick={handleComplete}>Complete</button>
         <button onClick={handleRemove}>Remove</button>
